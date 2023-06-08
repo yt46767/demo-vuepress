@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "dependencies": {
-    "ejs": "^2.7.1",
+    "ejs": "^3.1.7",
     "tracer": "^1.0.1"
   },
   "devDependencies": {
