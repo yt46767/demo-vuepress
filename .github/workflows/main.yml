@@ -1,1 +1,26 @@
-1
+name: Main Workflow  
+  
+on:  
+  push:  
+    branches:  
+      - master  
+      - feature/*  
+      - !skip_build  
+  
+jobs:  
+  build:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v2.1.1  
+      - name: Check if build should run  
+        run: |  
+          if [ "\$(git config -l --get actions.run-using)" != "github-hosted" ]; then  
+            echo "This workflow is not hosted on GitHub, skipping build"  
+            exit 0  
+          fi  
+          if [ "\$(git log -1 --pretty=%ct)" -lt 1209600 ]; then  
+            echo "The latest commit is more than two weeks old, skipping build"  
+            exit 0  
+          fi  
+          # 在这里添加其他的构建和测试命令  
+          # ...  
