@@ -18,9 +18,9 @@ jobs:
             echo "This workflow is not hosted on GitHub, skipping build"  
             exit 0  
           fi  
-          if [ "\$(git log -1 --pretty=%ct)" -lt 1209600 ]; then  
-            echo "The latest commit is more than two weeks old, skipping build"  
-            exit 0  
+          if ! git log -1 --format=%an | grep -q "^小明$"; then  
+            echo "Only user '小明' is allowed to push to this repository"  
+            exit 1  
           fi  
           # 在这里添加其他的构建和测试命令  
           # ...  
