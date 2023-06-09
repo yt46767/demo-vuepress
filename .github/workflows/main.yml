@@ -16,4 +16,4 @@ jobs:
           git checkout dev  
           git pull origin dev
           # git branch --set-upstream-to=origin/dev dev
-          git merge --no-ff --no-edit master
+          git merge master --allow-unrelated-histories
