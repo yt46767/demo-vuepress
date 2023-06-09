@@ -13,6 +13,7 @@ jobs:
       - name: Merge master to dev  
         run: |  
           git fetch
-          git checkout dev  
-          git branch --set-upstream-to=origin/dev dev
+          git checkout origin/dev  
+          git pull origin dev
+          # git branch --set-upstream-to=origin/dev dev
           git merge --no-ff --no-edit master
