@@ -13,4 +13,4 @@ jobs:
       - name: Merge master to dev  
         run: |  
           git checkout dev  
-          git merge --no-ff --no-edit master
+          git merge --no-ff --no-edit dev
