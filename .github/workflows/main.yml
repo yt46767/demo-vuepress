@@ -3,24 +3,16 @@ name: Main Workflow
 on:  
   push:  
     branches:  
-      - master  
-      - feature/*  
-      - !skip_build  
+      - '*' # 触发器将在每个分支的push操作后触发  
   
 jobs:  
-  build:  
+  merge_request:  
     runs-on: ubuntu-latest  
     steps:  
-      - uses: actions/checkout@v2.1.1  
-      - name: Check if build should run  
+      - name: Checkout code  
+        uses: actions/checkout@v2.1.1  
+      - name: Create merge request  
         run: |  
-          if [ "\$(git config -l --get actions.run-using)" != "github-hosted" ]; then  
-            echo "This workflow is not hosted on GitHub, skipping build"  
-            exit 0  
-          fi  
-          if ! git log -1 --format=%an | grep -q "^小明$"; then  
-            echo "Only user '小明' is allowed to push to this repository"  
-            exit 1  
-          fi  
-          # 在这里添加其他的构建和测试命令  
-          # ...  
+          echo "Creating merge request from ${{ github.sha }} to dev..."  
+          # 在这里添加创建合并请求的命令，例如：  
+          # ./create_merge_request.sh ${{ github.sha }} dev
