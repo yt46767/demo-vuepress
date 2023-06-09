@@ -1,18 +1,19 @@
-name: Main Workflow  
-  
+name: Merge master to dev  
 on:  
   push:  
     branches:  
-      - '*' # 触发器将在每个分支的push操作后触发  
+      - master  
   
 jobs:  
-  merge_request:  
+  merge_master_to_dev:  
     runs-on: ubuntu-latest  
     steps:  
       - name: Checkout code  
         uses: actions/checkout@v2.1.1  
-      - name: Create merge request  
+      - name: Merge master to dev  
         run: |  
-          echo "Creating merge request from ${{ github.sha }} to dev..."  
-          # 在这里添加创建合并请求的命令，例如：  
-          # ./create_merge_request.sh ${{ github.sha }} dev
+          git fetch
+          git checkout origin/dev  
+          git pull origin dev
+          # git branch --set-upstream-to=origin/dev dev
+          git merge --no-ff --no-edit master
