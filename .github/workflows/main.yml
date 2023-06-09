@@ -15,4 +15,4 @@ jobs:
         run: |  
           echo "Creating merge request from ${{ github.sha }} to dev..."  
           # 在这里添加创建合并请求的命令，例如：  
-          # ./create_merge_request.sh ${{ github.sha }} dev
+          ./create_merge_request.sh ${{ github.sha }} dev
