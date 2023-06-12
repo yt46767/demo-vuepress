@@ -17,6 +17,8 @@ jobs:
           git fetch
           git checkout dev  
           git pull origin dev
+          git push
           # git branch --set-upstream-to=origin/dev dev
           git merge master --allow-unrelated-histories
           # git merge master
+          git push
