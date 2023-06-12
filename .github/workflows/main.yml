@@ -16,6 +16,7 @@ jobs:
           git config --global user.name "杨涛"
           git fetch
           git checkout dev  
-          git pull origin dev
+          # git pull origin dev
           # git branch --set-upstream-to=origin/dev dev
-          git merge master --allow-unrelated-histories
+          # git merge master --allow-unrelated-histories
+          git merge master
